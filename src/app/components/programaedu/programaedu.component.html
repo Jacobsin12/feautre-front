@@ -1,0 +1,127 @@
+<div class="container">
+  <h1 class="page-title">Gestión de Programas Educativos</h1>
+
+  <p-toolbar>
+    <div class="p-toolbar-group-left">
+      <button 
+        pButton 
+        label="Nuevo" 
+        icon="pi pi-plus" 
+        class="p-button-success" 
+        (click)="openNewModal()"
+      ></button>
+    </div>
+  </p-toolbar>
+
+  <p-table
+    [value]="programas"
+    [paginator]="true"
+    [rows]="rows"
+    [first]="first"
+    [responsiveLayout]="'scroll'"
+    [rowsPerPageOptions]="[10, 20, 30]"
+    (onPage)="onPageChange($event)"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>División</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-prog>
+      <tr>
+        <td>{{ prog.id }}</td>
+        <td>{{ prog.nombre }}</td>
+        <td>{{ prog.divisionId }}</td>
+        <td class="action-buttons">
+          <button
+            pButton
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-success p-mr-2"
+            (click)="openEditModal(prog)"
+          ></button>
+
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger"
+            (click)="deletePrograma(prog)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<!-- Modal Editar -->
+<p-dialog 
+  [header]="'Editar Programa: ' + (selectedPrograma?.nombre || '')" 
+  [(visible)]="displayEditModal" 
+  [modal]="true"
+  [style]="{ width: '50vw', minWidth: '300px' }"
+  (onHide)="closeEditModal()" 
+  [resizable]="false"
+>
+  <div class="p-fluid" *ngIf="selectedPrograma">
+    <div class="field mb-4">
+      <label for="edit_nombre">Nombre del Programa</label>
+      <input id="edit_nombre" type="text" pInputText [(ngModel)]="selectedPrograma.nombre" />
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button label="Cancelar" icon="pi pi-times" (click)="closeEditModal()" styleClass="p-button-text"></p-button>
+    <p-button label="Guardar Cambios" icon="pi pi-check" (click)="saveChanges()" styleClass="p-button-primary"></p-button>
+  </ng-template>
+</p-dialog>
+
+<!-- Modal Nuevo -->
+<p-dialog 
+  header="Registrar Nuevo Programa Educativo" 
+  [(visible)]="displayNewModal" 
+  [modal]="true"
+  [style]="{ width: '40vw', minWidth: '250px' }"
+  (onHide)="displayNewModal = false" 
+  [resizable]="false"
+>
+  <div class="p-fluid">
+    <div class="field mb-4">
+      <label for="new_nombre">Nombre del Programa</label>
+      <input 
+        id="new_nombre" 
+        type="text" 
+        pInputText 
+        [(ngModel)]="newPrograma.nombre"
+      />
+    </div>
+
+    <div class="field mb-4">
+      <label for="division_id">ID de División</label>
+      <input 
+        id="division_id" 
+        type="number" 
+        pInputText 
+        [(ngModel)]="newPrograma.divisionId"
+      />
+    </div>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <p-button 
+      label="Cancelar" 
+      icon="pi pi-times" 
+      (click)="displayNewModal = false" 
+      styleClass="p-button-text"
+    ></p-button>
+    <p-button 
+      label="Guardar Nuevo" 
+      icon="pi pi-save" 
+      (click)="saveNewPrograma()" 
+      [disabled]="!newPrograma.nombre || !newPrograma.divisionId"
+      styleClass="p-button-success"
+    ></p-button>
+  </ng-template>
+</p-dialog>

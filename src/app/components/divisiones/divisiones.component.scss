@@ -1,0 +1,149 @@
+/* ======================================================= */
+/* 1. LAYOUT GENERAL Y CONTENEDOR */
+/* ======================================================= */
+.container {
+  padding: 30px; 
+  max-width: 1400px; 
+  margin: 0 auto; 
+  font-family: 'Inter', sans-serif; 
+
+}
+
+/* Título principal del componente */
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #3e3e3e; /* Gris oscuro para el texto */
+  margin-bottom: 25px;
+  border-bottom: 3px solid #4f46e5; 
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* ======================================================= */
+/* 2. BARRA DE HERRAMIENTAS (p-toolbar) */
+/* ======================================================= */
+p-toolbar {
+  display: block;
+  margin-bottom: 25px;
+  border-radius: 8px; 
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); 
+  padding: 1rem 1.25rem; 
+  
+}
+
+/* Ajuste del botón 'Nuevo' */
+.p-toolbar-group-left button {
+  font-weight: 600;
+}
+
+
+/* ======================================================= */
+/* 3. TABLA (p-table) - MEJORAS VISUALES */
+/* ======================================================= */
+p-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px; 
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); 
+
+}
+
+/* ENCABEZADO DE LA TABLA */
+.p-datatable-thead > tr > th {
+  /* 💡 AJUSTE LIGHT MODE: Asegura que el color de fondo del encabezado es claro */
+  background-color: #eef2ff !important; 
+  color: #4338ca; 
+  font-weight: 700; 
+  padding: 1.1rem 1rem;
+  text-align: left;
+  text-transform: uppercase; 
+  letter-spacing: 0.05em; 
+}
+
+/* CUERPO DE LA TABLA */
+.p-datatable-tbody > tr > td {
+  padding: 1rem;
+  border-top: 1px solid #e0e7ff; 
+  color: #374151; 
+}
+
+/* Efecto Hover en las filas */
+.p-datatable-tbody > tr:hover {
+  background-color: #f7f9ff !important; 
+  cursor: pointer;
+}
+
+/* Filas alternas */
+.p-datatable-tbody > tr:nth-child(even) {
+  /* 💡 AJUSTE LIGHT MODE: Asegura que la fila alterna sea muy clara */
+  background-color: #fcfdfe !important; 
+}
+
+
+/* ESTADO (Activo/Inactivo) */
+.status-active {
+    background-color: #d1fae5; 
+    color: #065f46; 
+    padding: 4px 8px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.status-inactive {
+    background-color: #fee2e2; 
+    color: #991b1b; 
+    padding: 4px 8px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* PROGRAMAS EDUCATIVOS */
+td ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+td ul li {
+  line-height: 1.6; 
+  white-space: normal; 
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+
+/* PAGINADOR */
+.p-paginator {
+  padding: 15px 10px;
+  border-top: 1px solid #e0e7ff; 
+  border-radius: 0 0 10px 10px; 
+}
+
+
+/* ======================================================= */
+/* 4. RESPONSIVIDAD (Ajustes para Móviles) */
+/* ======================================================= */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .page-title {
+    font-size: 1.8rem; 
+    margin-bottom: 20px;
+  }
+
+  p-toolbar {
+    padding: 0.75rem 1rem; 
+    margin-bottom: 15px;
+  }
+
+  /* Reducir el padding de la tabla en móviles */
+  .p-datatable-thead > tr > th,
+  .p-datatable-tbody > tr > td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+}
