@@ -1,0 +1,33 @@
+<div class="home-container">
+  <div class="welcome-card">
+    <h1 class="title">Bienvenido a la Plataforma</h1>
+    <p class="subtitle">Gestiona divisiones, programas educativos y usuarios fácilmente</p>
+  </div>
+
+  <div class="stats-grid">
+    <a routerLink="/programaedu" class="stat-card card-blue">
+      <i class="pi pi-book icon"></i>
+      <h2>Programas Educativos</h2>
+      <p>Consulta, edita y agrega programas de estudio.</p>
+      <button pButton label="Ir a Programas" icon="pi pi-arrow-right" class="p-button-sm p-button-light"></button>
+    </a>
+
+    <a routerLink="/divisiones" class="stat-card card-green">
+      <i class="pi pi-sitemap icon"></i>
+      <h2>Divisiones</h2>
+      <p>Gestiona todas las divisiones académicas de tu institución.</p>
+      <button pButton label="Ir a Divisiones" icon="pi pi-arrow-right" class="p-button-sm p-button-light"></button>
+    </a>
+
+    <a routerLink="/usuarios" class="stat-card card-orange">
+      <i class="pi pi-users icon"></i>
+      <h2>Usuarios</h2>
+      <p>Administra accesos, roles y permisos del sistema.</p>
+      <button pButton label="Ir a Usuarios" icon="pi pi-arrow-right" class="p-button-sm p-button-light"></button>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <p>© {{ currentYear }} Universidad — Todos los derechos reservados</p>
+  </footer>
+</div>
